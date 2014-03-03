@@ -1,0 +1,3 @@
+[submodule "Jspad"]
+	path = Jspad
+	url = https://github.com/jonnymohamed/Jspad.git
