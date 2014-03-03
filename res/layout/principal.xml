@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PrincipalActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/selecione"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <Button
+        android:id="@+id/btSair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/btn_default_small"
+        android:height="80dp"
+        android:text="@string/bt_sair"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:width="100dp" />
+
+    <Button
+        android:id="@+id/btJoystick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btSair"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="28dp"
+        android:height="100dp"
+        android:text="@string/bt_joystick"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:width="150dp" />
+
+    <Button
+        android:id="@+id/btMediacontrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btJoystick"
+        android:layout_toRightOf="@+id/btSair"
+        android:height="100dp"
+        android:text="@string/bt_midiacontrol"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:width="150dp" />
+
+    <Button
+        android:id="@+id/bt"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btSair"
+        android:layout_alignBottom="@+id/btSair"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Button" />
+
+</RelativeLayout>
