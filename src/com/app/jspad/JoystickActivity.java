@@ -74,9 +74,9 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	        Quanto maioro o valor de Z Mais ele esta inclinado para frente
 	        Quanto menor o valor de Z Mais ele esta inclinado para traz.
 	        */
-	        textViewX.setText("Posição X: " + x.intValue() + " Float: " + x);
-	        textViewY.setText("Posição Y: " + y.intValue() + " Float: " + y);
-	        textViewZ.setText("Posição Z: " + z.intValue() + " Float: " + z);
+	        textViewX.setText("Posição X: " + x.intValue());
+	        textViewY.setText("Posição Y: " + y.intValue());
+	        textViewZ.setText("Posição Z: " + z.intValue());
 	         
 	        if(y < 0) { // O dispositivo esta de cabeça pra baixo
 	            if(x > 0)  
