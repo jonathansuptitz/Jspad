@@ -8,12 +8,14 @@
     <string name="bt_voltar3">Voltar</string>
     <string name="bt_sair">Sair</string>
     <string name="selecione">Selecione o Controle:</string>
-    <string name="hello_world">Hello World</string><string name="bt_voltar">Voltar</string>
-    
-    
-    
-    
-    
-    
+    <string name="hello_world">Hello World</string>
+    <string name="bt_voltar">Voltar</string>
+    <string name="bt_voltar4">Voltar</string>
+    <string name="btconectar">Conectar</string>
+    <string name="title_activity_conectar">ConectarActivity</string>
+    <string name="btA">A</string>
+    <string name="btB">B</string>
+    <string name="btC">C</string>
+    <string name="btD">D</string>
 
 </resources>

@@ -11,14 +11,14 @@
         android:text="@string/bt_voltar" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btConect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/btvoltar"
         android:layout_marginRight="38dp"
         android:height="70dp"
-        android:text="A"
+        android:text="@string/btA"
         android:textSize="22sp"
         android:textStyle="bold"
         android:width="70dp" />
@@ -30,7 +30,7 @@
         android:layout_alignLeft="@+id/button3"
         android:layout_below="@+id/button2"
         android:height="70dp"
-        android:text="D"
+        android:text="@string/btD"
         android:textSize="22sp"
         android:textStyle="bold"
         android:width="70dp" />
@@ -43,7 +43,7 @@
         android:layout_marginTop="36dp"
         android:layout_toRightOf="@+id/button3"
         android:height="70dp"
-        android:text="C"
+        android:text="@string/btC"
         android:textSize="22sp"
         android:textStyle="bold"
         android:width="70dp" />
@@ -52,11 +52,11 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/btConect"
         android:layout_marginRight="38dp"
-        android:layout_toLeftOf="@+id/button1"
+        android:layout_toLeftOf="@+id/btConect"
         android:height="70dp"
-        android:text="B"
+        android:text="@string/btB"
         android:textSize="22sp"
         android:textStyle="bold"
         android:width="70dp" />
@@ -90,7 +90,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
-          android:layout_below="@+id/button1"
+          android:layout_below="@+id/btConect"
           android:text="@string/hello_world" />
 
 </RelativeLayout>

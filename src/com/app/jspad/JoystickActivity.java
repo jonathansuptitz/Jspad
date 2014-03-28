@@ -16,7 +16,6 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	private TextView textViewX;
     private TextView textViewY;
     private TextView textViewZ;
-    private TextView textViewDetail;
     
 	private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -29,20 +28,32 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 		textViewX = (TextView) findViewById(R.id.text_view_x);
         textViewY = (TextView) findViewById(R.id.text_view_y);
         textViewZ = (TextView) findViewById(R.id.text_view_z);
-        textViewDetail = (TextView) findViewById(R.id.text_view_detail);
         
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         
-        Button btVoltar = (Button)findViewById(R.id.btvoltar);//botao voltar joystick
-	    
+        
 	    //evento click do botao voltar
+		Button btVoltar = (Button)findViewById(R.id.btvoltar);//botao voltar joystick
+		
 	    btVoltar.setOnClickListener(new OnClickListener() {
 	    	public void onClick ( View arg0 ) {
+	    		try {
+    				ConnectionSocket.getCurentConnection().disconnect();
+    				
+    			} catch (Exception e) {
+
+    			}
+	    		
         		finish();
 	    		}
 	    });
+	    
+
+	    
 	}
+	
+	
 	    @Override
 	    protected void onResume() {
 	        super.onResume();
@@ -58,36 +69,30 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 	    }
 	 
+	    
 	    public void onSensorChanged(SensorEvent event) {
-	        Float x = event.values[0];
-	        Float y = event.values[1];
-	        Float z = event.values[2];
+	    	
+	        float x= event.values[0];
+	        float y= event.values[1];
+	        float z= event.values[2];
+	        
+	        textViewX.setText(String.valueOf(x));
+	        textViewY.setText(String.valueOf(y));
+	        textViewZ.setText(String.valueOf(z));
+	        
 	         
-	         /*
-	        Os valores ocilam de -10 a 10.
-	        Quanto maior o valor de X mais ele ta caindo para a esquerda - Positivo Esqueda 
-	        Quanto menor o valor de X mais ele ta caindo para a direita  - Negativo Direita
-	        Se o valor de  X for 0 então o celular ta em pé - Nem Direita Nem Esquerda
-	        Se o valor de Y for 0 então o cel ta "deitado"
-	         Se o valor de Y for negativo então ta de cabeça pra baixo, então quanto menor y mais ele ta inclinando pra ir pra baixo
-	        Se o valor de Z for 0 então o dispositivo esta reto na horizontal.
-	        Quanto maioro o valor de Z Mais ele esta inclinado para frente
-	        Quanto menor o valor de Z Mais ele esta inclinado para traz.
-	        */
-	        textViewX.setText("Posição X: " + x.intValue());
-	        textViewY.setText("Posição Y: " + y.intValue());
-	        textViewZ.setText("Posição Z: " + z.intValue());
-	         
-	        if(y < 0) { // O dispositivo esta de cabeça pra baixo
-	            if(x > 0)  
-	                textViewDetail.setText("Virando para ESQUERDA ficando INVERTIDO");
-	            if(x < 0)  
-	                textViewDetail.setText("Virando para DIREITA ficando INVERTIDO");   
-	        } else {
-	            if(x > 0)  
-	                textViewDetail.setText("Virando para ESQUERDA ");
-	            if(x < 0)  
-	                textViewDetail.setText("Virando para DIREITA ");
-	        }   
-	    }
+	            if(z < 7){ 
+	            	ConnectionSocket.getCurentConnection().senMessage("d");
+	            }
+	            else if(z > 8){  
+	                ConnectionSocket.getCurentConnection().senMessage("u");
+	            }
+	            else if(y > 1){  
+	                ConnectionSocket.getCurentConnection().senMessage("r");
+	            }
+	            else if(y < -1){  
+	                ConnectionSocket.getCurentConnection().senMessage("l");
+	        	}
+	        }
+		    
 	}
