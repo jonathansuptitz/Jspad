@@ -14,6 +14,7 @@
     <string name="btconectar">Conectar</string>
     <string name="title_activity_conectar">ConectarActivity</string>
     <string name="btA">A</string>
+    <string name="btmover">Mover</string>
     <string name="btB">B</string>
     <string name="btC">C</string>
     <string name="btD">D</string>

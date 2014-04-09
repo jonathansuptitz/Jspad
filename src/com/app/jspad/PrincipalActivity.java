@@ -1,7 +1,6 @@
 package com.app.jspad;
 
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -56,15 +55,13 @@ public class PrincipalActivity extends Activity {
     });
       
  }; 
- 
+
+ //verifica conexao wifi com a internet
  public static boolean isOnline(Context contexto){
 	 //Pego a conectividade do contexto o qual o metodo foi chamado
 	 ConnectivityManager cm = (ConnectivityManager) contexto.getSystemService(Context.CONNECTIVITY_SERVICE);
-	 //Crio o objeto netInfo que recebe as informacoes da NEtwork
-	 NetworkInfo netInfo = cm.getActiveNetworkInfo();
-	 //Se o objeto for nulo ou nao tem conectividade retorna false
-	 
-	 if ( (netInfo != null) && (netInfo.isConnectedOrConnecting()) && (netInfo.isAvailable()) ){
+
+	 if (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected()){
 		 return true;
 	 }
 	 else{

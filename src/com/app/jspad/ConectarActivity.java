@@ -29,7 +29,7 @@ public class ConectarActivity extends Activity {
 	        		finally{
 	        			Intent intent = new Intent(ConectarActivity.this, JoystickActivity.class);
 	         		
-	        				startActivity(intent);
+	        			startActivity(intent);
 	        		}
 	        }
 	    });
@@ -52,7 +52,7 @@ public class ConectarActivity extends Activity {
 		    
 	    }
 	    private void Conectar(){
-	    	String edIp = edtip.getText().toString();
+	    	String edIp = edtip.getText().toString();   	
 			String edPorta = "1234";
 			
 			if (edIp.length() != 0 ) {

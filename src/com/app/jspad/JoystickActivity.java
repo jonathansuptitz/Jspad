@@ -10,32 +10,27 @@ import android.hardware.SensorManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class JoystickActivity extends Activity implements SensorEventListener{
-	private TextView textViewX;
-    private TextView textViewY;
-    private TextView textViewZ;
-    
+
 	private SensorManager mSensorManager;
     private Sensor mAccelerometer;
+    
+    private Button btVoltar;
+    private Button btmover;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState) ;
 		setContentView(R.layout.telajoystick);
-		
-		textViewX = (TextView) findViewById(R.id.text_view_x);
-        textViewY = (TextView) findViewById(R.id.text_view_y);
-        textViewZ = (TextView) findViewById(R.id.text_view_z);
-        
+     
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         
-        
-	    //evento click do botao voltar
-		Button btVoltar = (Button)findViewById(R.id.btvoltar);//botao voltar joystick
+        btmover = (Button)findViewById(R.id.btMover);//botao voltar joystick
+		btVoltar = (Button)findViewById(R.id.btvoltar);//botao voltar joystick
 		
+		//evento click do botao voltar
 	    btVoltar.setOnClickListener(new OnClickListener() {
 	    	public void onClick ( View arg0 ) {
 	    		try {
@@ -48,16 +43,13 @@ public class JoystickActivity extends Activity implements SensorEventListener{
         		finish();
 	    		}
 	    });
-	    
-
-	    
 	}
 	
 	
 	    @Override
 	    protected void onResume() {
 	        super.onResume();
-	        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+	        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
 	    }
 	     
 		@Override
@@ -74,25 +66,20 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	    	
 	        float x= event.values[0];
 	        float y= event.values[1];
-	        float z= event.values[2];
 	        
-	        textViewX.setText(String.valueOf(x));
-	        textViewY.setText(String.valueOf(y));
-	        textViewZ.setText(String.valueOf(z));
-	        
-	         
-	            if(z < 7){ 
-	            	ConnectionSocket.getCurentConnection().senMessage("d");
+	        if (btmover.isPressed()){ 
+	            if(x < 6){ 
+	            	ConnectionSocket.getCurentConnection().senMessage("l");
 	            }
-	            else if(z > 8){  
-	                ConnectionSocket.getCurentConnection().senMessage("u");
-	            }
-	            else if(y > 1){  
+	            if(x > 8){  
 	                ConnectionSocket.getCurentConnection().senMessage("r");
 	            }
-	            else if(y < -1){  
-	                ConnectionSocket.getCurentConnection().senMessage("l");
+	            if(y > 2){  
+	                ConnectionSocket.getCurentConnection().senMessage("u");
+	            }
+	            if(y < -2){  
+	                ConnectionSocket.getCurentConnection().senMessage("d");
 	        	}
 	        }
-		    
+	    }
 	}
