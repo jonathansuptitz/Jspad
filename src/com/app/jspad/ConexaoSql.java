@@ -10,12 +10,7 @@ public class ConexaoSql {
 
 	        try
 	        {
-	            String userName = "root";
-	            String password = "";
-	            String url = "jdbc:mysql://localhost/";
-	            Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-	            conn = DriverManager.getConnection (url, userName, password);
-	            System.out.println ("Conexão com o BD estabelecida!");
+	  
 	        }
 	        catch (Exception e)
 	        {

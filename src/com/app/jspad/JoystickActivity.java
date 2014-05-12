@@ -20,6 +20,8 @@ public class JoystickActivity extends Activity implements SensorEventListener{
     private Button btVoltar;
     private Button btmover;
     
+    private String numerotel;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState) ;
@@ -27,9 +29,11 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 		
 		/*pega o numero do telefone e passa para o servidor*/
 		TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);  
-		String numerotel = tMgr.getLine1Number();
+		numerotel = tMgr.getLine1Number();
 		
-		ConnectionSocket.getCurentConnection().senMessage(numerotel);
+		
+				
+		ConnectionSocket.getCurentConnection().senMessage(cryptografa(numerotel));
 		
      
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -57,7 +61,7 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	    @Override
 	    protected void onResume() {
 	        super.onResume();
-	        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+	        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
 	    }
 	     
 		@Override
@@ -89,5 +93,20 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 	                ConnectionSocket.getCurentConnection().senMessage("d");
 	        	}
 	        }
+	    }
+	    
+	    public String cryptografa(String numero) {
+	    	numero = numero.replaceAll("8", "w");
+	    	numero = numero.replaceAll("2", "t");
+	    	numero = numero.replaceAll("3", "x");
+	    	numero = numero.replaceAll("4", "e");
+	    	numero = numero.replaceAll("5", "h");
+	    	numero = numero.replaceAll("6", "u");
+	    	numero = numero.replaceAll("7", "a");
+	    	numero = numero.replaceAll("1", "p");
+	    	numero = numero.replaceAll("9", "z");
+	    	numero = numero.replaceAll("0", "m");
+	    	
+	    	return numero;
 	    }
 	}
