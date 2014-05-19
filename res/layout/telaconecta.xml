@@ -1,49 +1,38 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center|clip_horizontal"
     android:keepScreenOn="true"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_vertical_margin"
     tools:context=".ConectarActivity" >
 
-    <Button
-        android:id="@+id/btvoltar4"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:height="50dp"
-        android:text="@string/bt_voltar"
-        android:textSize="22sp"
-        android:width="100dp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btConect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/btconectar"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:text="@string/senha"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/edtip"
-        android:layout_width="wrap_content"
+        android:id="@+id/edtSenha"
+        android:layout_width="298dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btConect"
-        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textEmailAddress" >
 
         <requestFocus />
     </EditText>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btConect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="@string/btconectar"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

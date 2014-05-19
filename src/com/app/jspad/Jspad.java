@@ -4,10 +4,6 @@ import java.util.Random;
 
 public class Jspad {
     private int chave;
-    
-    public Jspad(){
-
-    }
 	
 	public String Decriptografa(String senha) {
 		String num = "";		

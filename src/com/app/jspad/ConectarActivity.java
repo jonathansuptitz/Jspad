@@ -9,14 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ConectarActivity extends Activity {
-	private EditText edtip;
+	private EditText edtSenha;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.telaconecta);
 
-	        edtip = (EditText) findViewById(R.id.edtip);
+	        edtSenha = (EditText) findViewById(R.id.edtSenha);
 	        
 	        //botao para tela joystick
 	        Button btConectar = (Button)findViewById(R.id.btConect);
@@ -33,32 +33,17 @@ public class ConectarActivity extends Activity {
 	        		}
 	        }
 	    });
-	        
-	        //evento click do botao voltar
-			Button btVoltar = (Button)findViewById(R.id.btvoltar4);
-			
-		    btVoltar.setOnClickListener(new OnClickListener() {
-		    	public void onClick ( View arg0 ) {
-		    		try {
-	    				ConnectionSocket.getCurentConnection().disconnect();
-	    				
-	    			} catch (Exception e) {
-
-	    			}
-		    		
-	        		finish();
-		    		}
-		    });
 		    
 	    }
 	    private void Conectar(){
-	    	String edIp = edtip.getText().toString();   	
-			String edPorta = "1234";
-			
-			if (edIp.length() != 0 ) {
+	    	Jspad js = new Jspad();
+	    	
+	    	String Ip = edtSenha.getText().toString();   	
+	    	
+			if (Ip.length() != 0 ) {
 				try {        	
 					// Tenta iniciar uma conexão com o Servidor de Socket
-					ConnectionSocket connection = ConnectionSocket.createConnection(edIp, edPorta);
+					ConnectionSocket connection = ConnectionSocket.createConnection(js.Decriptografa(Ip), "1234");
 			            	connection.connect();
 			        //inicia o envio das msg
 			            	

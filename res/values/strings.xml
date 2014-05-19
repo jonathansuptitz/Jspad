@@ -18,5 +18,6 @@
     <string name="btB">B</string>
     <string name="btC">C</string>
     <string name="btD">D</string>
+    <string name="senha">Digite a Senha</string>
 
 </resources>
