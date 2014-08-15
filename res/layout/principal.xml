@@ -25,12 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/btJoystick"
         android:background="@android:drawable/btn_default_small"
-        android:height="80dp"
+        android:height="90dp"
         android:text="@string/bt_sair"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
         android:width="100dp" />
 
     <Button
@@ -42,9 +43,9 @@
         android:layout_marginBottom="28dp"
         android:height="100dp"
         android:text="@string/bt_joystick"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:width="150dp" />
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:width="145dp" />
 
     <Button
         android:id="@+id/btMediacontrol"
@@ -54,8 +55,8 @@
         android:layout_toRightOf="@+id/btSair"
         android:height="100dp"
         android:text="@string/bt_midiacontrol"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
         android:width="150dp" />
 
 </RelativeLayout>

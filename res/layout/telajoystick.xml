@@ -3,82 +3,73 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true" >
 
-    <Button
-        android:id="@+id/btConect"
+    <ToggleButton
+        android:id="@+id/btmover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/btvoltar"
         android:height="80dp"
-        android:text="@string/btA"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:width="80dp" />
-
-    <Button
-        android:id="@+id/btMover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button4"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button3"
-        android:layout_marginLeft="21dp"
-        android:height="100dp"
-        android:text="@string/btmover"
-        android:textSize="22sp"
+        android:text="ToggleButton"
         android:width="100dp" />
 
     <Button
         android:id="@+id/btvoltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btMover"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:height="50dp"
+        android:height="60dp"
         android:text="@string/bt_voltar"
         android:textSize="22sp"
         android:width="100dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/botaoA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btConect"
-        android:layout_below="@+id/btConect"
-        android:layout_marginTop="30dp"
-        android:height="80dp"
+        android:layout_alignBaseline="@+id/botaoB"
+        android:layout_alignBottom="@+id/botaoB"
+        android:layout_alignLeft="@+id/botaoC"
+        android:height="90dp"
+        android:text="@string/btA"
+        android:textSize="30sp"
+        android:width="90dp" />
+
+    <Button
+        android:id="@+id/botaoC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/botaoA"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:height="90dp"
         android:text="@string/btC"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:width="80dp" />
+        android:textSize="30sp"
+        android:width="90dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/botaoD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="30dp"
-        android:height="80dp"
+        android:layout_alignBaseline="@+id/botaoC"
+        android:layout_alignBottom="@+id/botaoC"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="37dp"
+        android:height="90dp"
         android:text="@string/btD"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:width="80dp" />
+        android:textSize="30sp"
+        android:width="90dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/botaoB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/botaoD"
         android:layout_below="@+id/btvoltar"
-        android:layout_marginRight="38dp"
-        android:layout_marginTop="29dp"
-        android:layout_toLeftOf="@+id/btConect"
-        android:height="80dp"
-        android:text="@string/btB"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:width="80dp" />
+        android:height="90dp"
+        android:text="@string/btAcaoB"
+        android:textSize="30sp"
+        android:width="90dp" />
 
 </RelativeLayout>

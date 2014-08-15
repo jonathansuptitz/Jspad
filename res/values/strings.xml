@@ -3,7 +3,7 @@
 
     <string name="app_name">Jspad</string>
     <string name="action_settings">Settings</string>
-    <string name="bt_midiacontrol">Midia Control</string>
+    <string name="bt_midiacontrol">Multimedia</string>
     <string name="bt_joystick">Joystick</string>
     <string name="bt_voltar3">Voltar</string>
     <string name="bt_sair">Sair</string>
@@ -15,9 +15,13 @@
     <string name="title_activity_conectar">ConectarActivity</string>
     <string name="btA">A</string>
     <string name="btmover">Mover</string>
-    <string name="btB">B</string>
+    <string name="btAcaoB">B</string>
     <string name="btC">C</string>
     <string name="btD">D</string>
     <string name="senha">Digite a Senha</string>
+    <string name="bt_1">1</string>
+    <string name="bt_2">2</string>
+    <string name="bt_3">3</string>
+    <string name="bt_4">4</string>
 
 </resources>

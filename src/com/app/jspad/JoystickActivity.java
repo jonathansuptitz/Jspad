@@ -1,63 +1,88 @@
 package com.app.jspad;
 
+import servicos.ConexaoSocket;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.telephony.TelephonyManager;
+
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import android.widget.Button;
+import android.widget.Toast;
 
 public class JoystickActivity extends Activity implements SensorEventListener{
 
 	private SensorManager mSensorManager;
     private Sensor mAccelerometer;
+    private boolean mover = false;
     
     private Button btVoltar;
     private Button btmover;
+    private Button btA;
+    private Button btB;
+    private Button btC;
+    private Button btD;
     
-    private String numerotel;
-    
+    private String mensagem;
+        
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState) ;
 		setContentView(R.layout.telajoystick);
-		
-		/*pega o numero do telefone e passa para o servidor*/
-		TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);  
-		numerotel = tMgr.getLine1Number();
-		
-		
-				
-		ConnectionSocket.getCurentConnection().senMessage(cryptografa(numerotel));
-		
      
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         
-        btmover = (Button)findViewById(R.id.btMover);//botao voltar joystick
-		btVoltar = (Button)findViewById(R.id.btvoltar);//botao voltar joystick
+        btmover = (Button)findViewById(R.id.btmover);
+		btVoltar = (Button)findViewById(R.id.btvoltar);
+		btA = (Button)findViewById(R.id.botaoA);
+		btB = (Button)findViewById(R.id.botaoB);
+		btC = (Button)findViewById(R.id.botaoC);
+		btD = (Button)findViewById(R.id.botaoD);
 		
 		//evento click do botao voltar
 	    btVoltar.setOnClickListener(new OnClickListener() {
 	    	public void onClick ( View arg0 ) {
 	    		try {
-    				ConnectionSocket.getCurentConnection().disconnect();
+    				ConexaoSocket.getConexao().disconectar();
     				
     			} catch (Exception e) {
-
+    				Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
     			}
 	    		
         		finish();
 	    		}
 	    });
+	    
+	    //ativa ou nao o uso do acelerometro
+	    btmover.setOnClickListener(new OnClickListener() {
+	    	public void onClick ( View arg0 ) {
+	    		if(mover){
+	    			mover = false;
+	    		}
+	    		else{
+	    			mover = true;
+	    		}
+	    	}
+	    });
+	    
+	    btA.setOnClickListener(meuClickLIstener);
+	    btB.setOnClickListener(meuClickLIstener);
+	    btC.setOnClickListener(meuClickLIstener);
+	    btD.setOnClickListener(meuClickLIstener);
+    
 	}
-	
-	
+		
+	/*
+	 * evento para quando a tela tiver aberta
+	 * definido senSibilidade do acelerometro
+	 */
 	    @Override
 	    protected void onResume() {
 	        super.onResume();
@@ -69,44 +94,65 @@ public class JoystickActivity extends Activity implements SensorEventListener{
 		       super.onPause();
 		        mSensorManager.unregisterListener(this);
 	    }
-	     
-	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-	    }
-	 
 	    
+		/*
+		 * evendo iniciado quando o sensor mudar
+		 * testa o valor e manda as mensagems
+		 */
 	    public void onSensorChanged(SensorEvent event) {
 	    	
-	        float x= event.values[0];
-	        float y= event.values[1];
+	       float x= event.values[0];
+	       float y= event.values[1];
 	        
-	        if (btmover.isPressed()){ 
-	            if(x < 6){ 
-	            	ConnectionSocket.getCurentConnection().senMessage("l");
+	       if (mover){ 
+	           if(x < 6){ 
+	            	mensagem = "d";
+	           }
+	           
+	           else if(x > 9){  
+	        	   mensagem = "u";
 	            }
-	            if(x > 8){  
-	                ConnectionSocket.getCurentConnection().senMessage("r");
+	           
+	           else if(y > 2){  
+	        	   mensagem = "r" ;
 	            }
-	            if(y > 2){  
-	                ConnectionSocket.getCurentConnection().senMessage("u");
-	            }
-	            if(y < -2){  
-	                ConnectionSocket.getCurentConnection().senMessage("d");
+	           
+	           else if(y < -2){  
+	                mensagem = "l";
 	        	}
+	           else{
+	        	   mensagem = "s";
+	           }
+	      
+	       
+	           ConexaoSocket.getConexao().enviarMensagem(mensagem);
+	       }
+	    }
+	
+	//evento de click   
+	private OnClickListener meuClickLIstener= new OnClickListener() {
+	        public void onClick(View v) {
+	        	if (v == btA){
+	            	mensagem = "1";
+	            }
+	            else if (v == btB){
+	            	mensagem = "2";
+	            }
+	            else if (v == btC){
+	            	mensagem = "3";
+	            }
+	            else if (v == btD){
+	            	mensagem = "4";
+	            }
+	            
+	            ConexaoSocket.getConexao().enviarMensagem(mensagem);   
 	        }
-	    }
-	    
-	    public String cryptografa(String numero) {
-	    	numero = numero.replaceAll("8", "w");
-	    	numero = numero.replaceAll("2", "t");
-	    	numero = numero.replaceAll("3", "x");
-	    	numero = numero.replaceAll("4", "e");
-	    	numero = numero.replaceAll("5", "h");
-	    	numero = numero.replaceAll("6", "u");
-	    	numero = numero.replaceAll("7", "a");
-	    	numero = numero.replaceAll("1", "p");
-	    	numero = numero.replaceAll("9", "z");
-	    	numero = numero.replaceAll("0", "m");
-	    	
-	    	return numero;
-	    }
+	    };
+
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
 	}
+
+}

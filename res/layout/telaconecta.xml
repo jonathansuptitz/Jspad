@@ -1,38 +1,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:gravity="center|clip_horizontal"
     android:keepScreenOn="true"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_vertical_margin"
-    tools:context=".ConectarActivity" >
+    android:paddingLeft="@dimen/activity_vertical_margin" >
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/senha"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="28sp" />
 
     <EditText
         android:id="@+id/edtSenha"
         android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/btConect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
+        android:height="100dp"
         android:text="@string/btconectar"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:width="135dp" />
+
+    <Button
+        android:id="@+id/btvoltar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal|end"
+        android:height="70dp"
+        android:text="@string/bt_voltar"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:width="90dp" />
 
 </LinearLayout>
